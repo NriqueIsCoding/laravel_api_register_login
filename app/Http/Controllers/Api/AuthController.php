@@ -37,23 +37,14 @@ class AuthController extends Controller
 
             $user = Auth::user();
             $success['token'] = $user->createToken('myApp')->accessToken;
-
+            
             return response()->json(['success' => $success], $this->successStatus); 
+
         } else {
+
             return response()->json(['error' => 'Unauthorized'], 401);
+
         }
-
-        // $validatedData = $request->validate([
-        //     'email' => 'email|required',
-        //     'password' => 'required'
-        // ]);
-
-        // if(!auth()->attempt($validatedData)) {
-        //     return response(['message' => 'Invalid credentials']);
-        // }
-        //     $accessToken = auth()->user()->createToken('authToken')->accessToken;
-
-        //     return response(['user' => auth()->user(), 'access_token' => $accessToken]);
     }
 
     public function getDetails() {
